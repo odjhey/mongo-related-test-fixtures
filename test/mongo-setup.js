@@ -3,6 +3,22 @@ const MongoClient = require("mongodb").MongoClient;
 class Repo {
   cachedDb = null;
 
+  constructor() {
+    this.hooks = {
+      save: [
+        (...args) => {
+          console.log("save got called with ", args);
+        },
+        (...args) => {
+          if (args[0] === "coll1") {
+            // debugger
+            console.log("show debugger to inspect ", args[0]);
+          }
+        },
+      ],
+    };
+  }
+
   async connectToDatabase() {
     const APP_DB_NAME = process.env.APP_DB_NAME;
     const APP_CONECTION_URI = `mongodb://localhost:27017/${APP_DB_NAME}`;
@@ -21,6 +37,10 @@ class Repo {
   }
 
   async save(_collectionName, payload) {
+    // execute all hooks in order
+    this.hooks["save"].forEach((fn) => {
+      fn(_collectionName, payload);
+    });
     return this.connectToDatabase().then((db) =>
       db.collection(_collectionName).insertOne(payload)
     );
