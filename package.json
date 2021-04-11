@@ -1,0 +1,19 @@
+{
+  "name": "mongo-repo-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "<odjhey@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha --file ./test/mongo-setup.js --reporter spec --exit"
+  },
+  "dependencies": {
+    "mongodb": "^3.6.6"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2",
+    "prettier": "^2.2.1",
+    "sinon": "^10.0.0"
+  }
+}
