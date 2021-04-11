@@ -4,7 +4,7 @@ class Repo {
   cachedDb = null;
 
   constructor(options) {
-    this.hooks = options ? options.hooks : {};
+    this.hooks = options ? options.hooks : { save: [] };
     /*
     this.hooks = {
       save: [

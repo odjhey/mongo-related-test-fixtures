@@ -1,22 +1,12 @@
 const Repo = require("../src/Repo");
+const { coll1 } = require("./fixtures/init-data.js");
 
 before(() => {
   return new Promise((resolve, reject) => {
     process.env.APP_DB_NAME = "MONGOTEST909";
-    new Repo({
-      hooks: {
-        save: [
-          () => {
-            console.log("hook added inb4");
-          },
-        ],
-      },
-    })
+    new Repo()
       // hydrate test data, from json file
-      .save("coll1", {
-        appId: 12345,
-        versions: [{ appVersion: "1.1" }, { appVersion: "1.2" }],
-      })
+      .save("coll1", coll1)
       .then(() => {
         resolve({ message: "done" });
       })

@@ -2,7 +2,9 @@
 
 - [x] add dummy data on start of test
 - [x] cleanup after test
-- [ ] enable a way to add a "hook" on db operations
+- [x] enable a way to add a "hook" on db operations
+- [x] read hydrate-data from external file
+- [ ] start your actual usecases boi
 
 ```jsonc
 // package.json
