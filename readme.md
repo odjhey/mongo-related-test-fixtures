@@ -4,12 +4,11 @@
 - [x] cleanup after test
 - [ ] enable a way to add a "hook" on db operations
 
-```json package.json
+```jsonc
+// package.json
 
     "scripts" : {
-      ...
       "test": "mocha --file ./test/mongo-setup.js --reporter spec --exit"
-      ...
     },
 
     "deps" : {
